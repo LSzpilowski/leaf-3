@@ -1,33 +1,42 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import BlogList from "./components/blogList";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "@/redux/configureStore";
+import { setVotes, incrementVote } from "@/redux/votesSlice";
 
 export default function Home() {
-  const blogs = [
-    {
-      title: "Do I know hooks?",
-      description: "Well, it depends which ones...",
-      author: "Luc",
-    },
-    {
-      title: "Do I need backend?",
-      description: "Huh, for frontend?",
-      author: "Unknown",
-    },
-    {
-      title: "Your time is ticking...",
-      description: "I have to hurry up!",
-      author: "Luc",
-    },
-  ];
+  const dispatch = useDispatch();
+  const votes = useSelector((state: RootState) => state.votes.votes);
 
-  const [votes, setVotes] = useState(blogs.map(() => 0));
+  const blogs = useMemo(
+    () => [
+      {
+        title: "Do I know hooks?",
+        description: "Well, it depends which ones...",
+        author: "Luc",
+      },
+      {
+        title: "Do I need backend?",
+        description: "Huh, for frontend?",
+        author: "Unknown",
+      },
+      {
+        title: "Your time is ticking...",
+        description: "I have to hurry up!",
+        author: "Luc",
+      },
+    ],
+    []
+  );
+
+  useEffect(() => {
+    dispatch(setVotes(blogs.map(() => 0)));
+  }, [dispatch, blogs]);
 
   const handleVote = (index: number) => {
-    const newVotes = [...votes];
-    newVotes[index] += 1;
-    setVotes(newVotes);
+    dispatch(incrementVote(index));
   };
 
   const ranks = votes
