@@ -22,7 +22,7 @@ function Projects() {
         </div>
       </div>
       <div className="flex flex-row justify-between w-3/4">
-        <div className="sticky top-44 w-1/3 text-center p-5">
+        <div className="w-1/3 text-center p-5">
           <FilterProjects />
         </div>
         <div className="w-2/3 p-5">
