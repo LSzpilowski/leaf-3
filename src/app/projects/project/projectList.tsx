@@ -1,4 +1,4 @@
-import mockProjects from "../mockData";
+import mockProjects from "@/app/mockData";
 import ProjectCard from "./projectCard";
 
 const areas = ["South-East", "South-West", "North-East", "North-West"];

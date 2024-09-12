@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { IoIosArrowForward } from "react-icons/io";
+import DialogCard from "../dialogCard/dialogCard";
 
 interface ItruncateText {
   text: string;
@@ -19,8 +19,11 @@ function truncateText({ text, maxLength }: ItruncateText) {
 
 interface IProject {
   title: string;
+  location: string;
+  district: string;
   estimatedCost: string;
   excerpt: string;
+  content: string;
   votes: number;
 }
 
@@ -37,7 +40,7 @@ function ProjectCard({ project, index, area }: IProjectCard) {
   return (
     <Card
       key={index}
-      className="p-3 hover:shadow-lg transition-all transform duration-300 ease-in-out"
+      className="p-3 hover:shadow-2xl transition-all transform duration-300 ease-in-out"
     >
       <h2>
         <strong>
@@ -48,12 +51,10 @@ function ProjectCard({ project, index, area }: IProjectCard) {
         <p>
           <strong>District:</strong> {area}
         </p>
-
         <p>
           <strong>Estimated Cost:</strong> {project.estimatedCost}
         </p>
-
-        <p className="mt-2">
+        <p className="my-2">
           {isExpanded
             ? project.excerpt
             : truncateText({
@@ -70,17 +71,15 @@ function ProjectCard({ project, index, area }: IProjectCard) {
             </Button>
           )}
         </p>
-
+        <DialogCard project={project} index={index} />
         <p className="my-2">
           <strong>Votes:</strong> {project.votes}
         </p>
-        <Button className="flex flex-row h-7 ">
-          <p>See details</p>
-          <IoIosArrowForward className="ml-2" />
-        </Button>
       </div>
     </Card>
   );
 }
+
+// TODO: Add Map functionality with a pin to be able to check loaction of a project
 
 export default ProjectCard;

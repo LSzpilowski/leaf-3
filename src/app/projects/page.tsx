@@ -1,7 +1,6 @@
 import Image from "next/image";
-import React from "react";
-import FilterProjects from "./filterProjects";
-import ProjectsList from "./projectList";
+import ProjectsList from "./project/projectList";
+import FilterProjects from "./project/filterProjects";
 
 function Projects() {
   return (
