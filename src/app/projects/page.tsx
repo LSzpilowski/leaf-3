@@ -1,10 +1,58 @@
+"use client";
+
+import { useState } from "react";
+import { mockProjects } from "../mockData";
 import Image from "next/image";
 import ProjectsList from "./project/projectList";
 import FilterProjects from "./project/filterProjects";
 
 function Projects() {
+  const [filteredProjects, setFilteredProjects] = useState(mockProjects);
+  const [selectedZone, setSelectedZone] = useState("All");
+  const [projectId, setProjectId] = useState<string>("");
+  const [projectName, setProjectName] = useState<string>("");
+
+  const handleZoneChange = (zone: string) => {
+    setSelectedZone(zone);
+    filterProjects(zone, projectId, projectName);
+  };
+
+  const handleIdChange = (id: string) => {
+    setProjectId(id);
+    filterProjects(selectedZone, id, projectName);
+  };
+
+  const handleNameChange = (name: string) => {
+    setProjectName(name);
+    filterProjects(selectedZone, projectId, name);
+  };
+
+  const filterProjects = (zone: string, id: string, name: string) => {
+    let filtered = mockProjects;
+
+    if (zone !== "All") {
+      filtered = filtered.filter((project) => project.district === zone);
+      console.log(filtered);
+    }
+
+    if (id.trim() !== "") {
+      filtered = filtered.filter((project) =>
+        project.id.toString().includes(id)
+      );
+    }
+
+    if (name.trim() !== "") {
+      filtered = filtered.filter((project) =>
+        project.title.toLowerCase().includes(name.toLowerCase())
+      );
+      console.log(filtered);
+    }
+
+    setFilteredProjects(filtered);
+  };
+
   return (
-    <div className="w-full flex flex-col items-center gap-10 bg-[#E4E4E4]">
+    <div className="min-h-screen w-full flex flex-col items-center gap-10 bg-[#E4E4E4]">
       <div className="relative w-full h-64">
         <Image
           src={"/images/pkpark.png"}
@@ -23,10 +71,15 @@ function Projects() {
       </div>
       <div className="flex flex-row justify-between w-3/4">
         <div className="w-1/3 text-center p-5">
-          <FilterProjects />
+          <FilterProjects
+            selectedZone={selectedZone}
+            onZoneChange={handleZoneChange}
+            onIdChange={handleIdChange}
+            onNameChange={handleNameChange}
+          />
         </div>
         <div className="w-2/3 p-5">
-          <ProjectsList />
+          <ProjectsList filteredProjects={filteredProjects} />
         </div>
       </div>
     </div>

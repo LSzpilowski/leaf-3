@@ -18,13 +18,13 @@ function truncateText({ text, maxLength }: ItruncateText) {
 }
 
 interface IProject {
+  id: number;
   title: string;
   location: string;
   district: string;
   estimatedCost: string;
   excerpt: string;
   content: string;
-  votes: number;
 }
 
 interface IProjectCard {
@@ -73,7 +73,7 @@ function ProjectCard({ project, index, area }: IProjectCard) {
         </p>
         <DialogCard project={project} index={index} />
         <p className="my-2">
-          <strong>Votes:</strong> {project.votes}
+          <strong>ID:</strong> {project.id}
         </p>
       </div>
     </Card>

@@ -8,7 +8,7 @@ interface IProject {
   estimatedCost: string;
   excerpt: string;
   content: string;
-  votes: number;
+  id: number;
 }
 
 interface IDialogMap {

@@ -7,7 +7,7 @@ interface IProject {
   estimatedCost: string;
   excerpt: string;
   content: string;
-  votes: number;
+  id: number;
 }
 
 interface IActiveMap {
@@ -19,10 +19,7 @@ function ActiveMap({ project, index }: IActiveMap) {
   return (
     <div className="h-full">
       <h3>Map View</h3>
-      <p>
-        {/* Display map-related content */}
-        Here is the map view for {project.title}.
-      </p>
+      <p>Here is the map view for {project.title}.</p>
     </div>
   );
 }
