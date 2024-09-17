@@ -29,7 +29,7 @@ function DialogCard({ project, index }: IDialogCard) {
           <IoIosArrowForward className="ml-2" />
         </div>
       </DialogTrigger>
-      <DialogContent className="flex flex-row w-full h-screen gap-0 py-10 px-48 bg-transparent  border-none rounded-none ">
+      <DialogContent className="flex flex-row w-full h-screen gap-0  px-48 bg-transparent  border-none rounded-none ">
         <DialogProject project={project} index={index} />
         <DialogMap project={project} index={index} />
       </DialogContent>

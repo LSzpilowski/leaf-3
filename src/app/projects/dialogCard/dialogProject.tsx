@@ -42,8 +42,8 @@ const navButtons: INavButtons[] = [
 function DialogProject({ project, index }: IDialogProject) {
   const [activeTab, setActiveTab] = useState("project");
   return (
-    <Card className="w-2/3 border-none rounded-tr-none gap-10 ">
-      <Card className="p-6 rounded-tr-none ">
+    <Card className="w-2/3 min-h-full border-none rounded-tr-none gap-10 ">
+      <Card className="p-6 min-h-full border-none">
         <p className="text-2xl font-semibold">
           {" "}
           {index + 1}. {project.title}
