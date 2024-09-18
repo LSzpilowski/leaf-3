@@ -11,19 +11,23 @@ function Projects() {
   const [selectedZone, setSelectedZone] = useState("All");
   const [projectId, setProjectId] = useState<string>("");
   const [projectName, setProjectName] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleZoneChange = (zone: string) => {
     setSelectedZone(zone);
+    setCurrentPage(1);
     filterProjects(zone, projectId, projectName);
   };
 
   const handleIdChange = (id: string) => {
     setProjectId(id);
+    setCurrentPage(1);
     filterProjects(selectedZone, id, projectName);
   };
 
   const handleNameChange = (name: string) => {
     setProjectName(name);
+    setCurrentPage(1);
     filterProjects(selectedZone, projectId, name);
   };
 
@@ -52,8 +56,8 @@ function Projects() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col items-center gap-10 bg-[#E4E4E4]">
-      <div className="relative w-full h-64">
+    <div className="min-h-screen w-full flex flex-col items-center gap-8 bg-[#E4E4E4] ">
+      <div className="relative w-full h-[28vh]">
         <Image
           src={"/images/pkpark.png"}
           alt="Parkour Park"
@@ -69,7 +73,7 @@ function Projects() {
           </p>
         </div>
       </div>
-      <div className="flex flex-row justify-between w-3/4">
+      <div className="flex flex-row justify-between w-3/4 min-h-[65vh] ">
         <div className="w-1/3 text-center p-5">
           <FilterProjects
             selectedZone={selectedZone}
@@ -78,8 +82,12 @@ function Projects() {
             onNameChange={handleNameChange}
           />
         </div>
-        <div className="w-2/3 p-5">
-          <ProjectsList filteredProjects={filteredProjects} />
+        <div className="w-2/3 p-5 h-full ">
+          <ProjectsList
+            filteredProjects={filteredProjects}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
       </div>
     </div>
