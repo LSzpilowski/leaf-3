@@ -7,7 +7,6 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const headerButtons = [
   "Home",
@@ -48,7 +47,7 @@ function Header() {
           />
         </Link>
       </div>
-      <div className="w-2/4 flex flex-row justify-between ">
+      <div className="w-3/4 flex flex-row justify-evenly ">
         {headerButtons.map((item, index) => {
           if (item === "About the Budget") {
             return (
@@ -95,7 +94,6 @@ function Header() {
           }
         })}
       </div>
-      <div className="w-1/4"></div>
     </Card>
   );
 }

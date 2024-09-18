@@ -1,19 +1,65 @@
+"use client";
+
+import { useState } from "react";
+import { mockProjects } from "../mockData";
 import Image from "next/image";
-import React from "react";
-import FilterProjects from "./filterProjects";
-import ProjectsList from "./projectList";
+import ProjectsList from "./project/projectList";
+import FilterProjects from "./project/filterProjects";
 
 function Projects() {
+  const [filteredProjects, setFilteredProjects] = useState(mockProjects);
+  const [selectedZone, setSelectedZone] = useState("All");
+  const [projectId, setProjectId] = useState<string>("");
+  const [projectName, setProjectName] = useState<string>("");
+
+  const handleZoneChange = (zone: string) => {
+    setSelectedZone(zone);
+    filterProjects(zone, projectId, projectName);
+  };
+
+  const handleIdChange = (id: string) => {
+    setProjectId(id);
+    filterProjects(selectedZone, id, projectName);
+  };
+
+  const handleNameChange = (name: string) => {
+    setProjectName(name);
+    filterProjects(selectedZone, projectId, name);
+  };
+
+  const filterProjects = (zone: string, id: string, name: string) => {
+    let filtered = mockProjects;
+
+    if (zone !== "All") {
+      filtered = filtered.filter((project) => project.district === zone);
+      console.log(filtered);
+    }
+
+    if (id.trim() !== "") {
+      filtered = filtered.filter((project) =>
+        project.id.toString().includes(id)
+      );
+    }
+
+    if (name.trim() !== "") {
+      filtered = filtered.filter((project) =>
+        project.title.toLowerCase().includes(name.toLowerCase())
+      );
+      console.log(filtered);
+    }
+
+    setFilteredProjects(filtered);
+  };
+
   return (
-    <div className="w-full flex flex-col items-center gap-10">
+    <div className="min-h-screen w-full flex flex-col items-center gap-10 bg-[#E4E4E4]">
       <div className="relative w-full h-64">
         <Image
           src={"/images/pkpark.png"}
           alt="Parkour Park"
-          layout="fill"
-          objectFit="cover"
+          fill={true}
           quality={100}
-          className="z-0"
+          className="z-0 object-cover"
         />
         <div className="absolute inset-0 bg-black opacity-25 z-10"></div>
         <div className="absolute inset-0 z-10 h-80 flex flex-col justify-center items-center">
@@ -23,12 +69,17 @@ function Projects() {
           </p>
         </div>
       </div>
-      <div className="flex flex-row justify-between w-3/4 bg-orange-200">
-        <div className="sticky top-20 bg-pink-200 w-1/3 text-center">
-          <FilterProjects />
+      <div className="flex flex-row justify-between w-3/4">
+        <div className="w-1/3 text-center p-5">
+          <FilterProjects
+            selectedZone={selectedZone}
+            onZoneChange={handleZoneChange}
+            onIdChange={handleIdChange}
+            onNameChange={handleNameChange}
+          />
         </div>
-        <div className="bg-yellow-50 w-2/3 ">
-          <ProjectsList />
+        <div className="w-2/3 p-5">
+          <ProjectsList filteredProjects={filteredProjects} />
         </div>
       </div>
     </div>
