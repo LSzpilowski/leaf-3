@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ReduxProvider from "./ReduxProvider";
 import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,8 @@ export default function RootLayout({
         <body className={inter.className}>
           <div className="flex flex-col items-center">
             <Header />
-            {children}
+            <div className="min-h-screen w-full"> {children}</div>
+            <Footer />
           </div>
         </body>
       </ReduxProvider>
