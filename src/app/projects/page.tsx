@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { mockProjects } from "../mockData";
 import Image from "next/image";
 import ProjectsList from "./project/projectList";
@@ -12,6 +13,22 @@ function Projects() {
   const [projectId, setProjectId] = useState<string>("");
   const [projectName, setProjectName] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const page = searchParams.get("page");
+    if (page) {
+      setCurrentPage(Number(page));
+    }
+  }, [searchParams]);
+
+  const updateQueryParams = (page: number) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set("page", page.toString());
+    window.history.pushState({}, "", url.toString());
+    setCurrentPage(page);
+  };
 
   const handleZoneChange = (zone: string) => {
     setSelectedZone(zone);
@@ -86,7 +103,7 @@ function Projects() {
           <ProjectsList
             filteredProjects={filteredProjects}
             currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
+            setCurrentPage={updateQueryParams}
           />
         </div>
       </div>
