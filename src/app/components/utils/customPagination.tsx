@@ -39,7 +39,7 @@ function CustomPagination({
           {Array.from({ length: totalPages }, (_, index) => (
             <PaginationItem key={index}>
               <PaginationLink
-                href="#"
+                href={`#/page_${index + 1}`}
                 onClick={() => setCurrentPage(index + 1)}
                 className={currentPage === index + 1 ? "font-bold" : ""}
               >
