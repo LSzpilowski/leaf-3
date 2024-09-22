@@ -67,17 +67,22 @@ function StatisticsTable() {
           {card.title1 === "First given vote" ? (
             <Card
               key={index}
-              className="w-full flex flex-row items-center justify-center gap-20 bg-[#E4E4E4]"
+              className="w-full flex flex-row items-center justify-center gap-20 py-5 bg-[#F6F6F6]"
             >
-              <CardHeader className="flex flex-col">
-                <CardTitle>{card.title1}</CardTitle>
-                <CardDescription>{card.desc1}</CardDescription>
-                <CardTitle>{card.title2}</CardTitle>
-                <CardDescription>{card.desc2}</CardDescription>
+              <CardHeader className="flex flex-col gap-5">
+                <div>
+                  <CardTitle>{card.title1}</CardTitle>
+                  <CardDescription>{card.desc1}</CardDescription>
+                </div>
+                <div>
+                  {" "}
+                  <CardTitle>{card.title2}</CardTitle>
+                  <CardDescription>{card.desc2}</CardDescription>
+                </div>
               </CardHeader>
               <Image
                 src={`${card.image1}`}
-                width={250}
+                width={300}
                 height={100}
                 alt="Image"
                 quality={100}
@@ -88,7 +93,7 @@ function StatisticsTable() {
               {card.title ? (
                 <Card
                   key={index}
-                  className="w-full flex flex-col justify-between items-center bg-[#E4E4E4]"
+                  className="w-full flex flex-col justify-between items-center bg-[#F6F6F6]"
                 >
                   <CardHeader className="w-full">
                     <CardTitle className="flex flex-col items-center w-full">
@@ -106,41 +111,31 @@ function StatisticsTable() {
                     )}
                   </CardHeader>
                   <CardContent className="w-full">
-                    {card.image2 ? (
-                      <div className="flex flex-row  w-full">
+                    <div className="w-full flex flex-col items-center">
+                      {card.title === "Voting day by day" ? (
                         <Image
                           src={`${card.image1}`}
-                          width={250}
-                          height={100}
-                          alt="Image"
-                          quality={100}
-                          className=""
-                        />
-                        <Image
-                          src={`${card.image2}`}
-                          width={250}
+                          width={700}
                           height={100}
                           alt="Image"
                           quality={100}
                         />
-                      </div>
-                    ) : (
-                      <div className="w-full flex flex-col items-center">
+                      ) : (
                         <Image
                           src={`${card.image1}`}
-                          width={250}
+                          width={400}
                           height={100}
                           alt="Image"
                           quality={100}
                         />
-                      </div>
-                    )}
+                      )}
+                    </div>
                   </CardContent>
                 </Card>
               ) : (
                 <Card
                   key={index}
-                  className="w-full  flex flex-col justify-between items-center bg-[#E4E4E4]"
+                  className="w-full  flex flex-col justify-between items-center bg-[#F6F6F6]"
                 >
                   <CardHeader className="flex flex-col items-center w-full">
                     <CardTitle className="w-full flex flex-col items-center">
@@ -165,7 +160,9 @@ function StatisticsTable() {
                       <div className="flex flex-row items-center w-full gap-10">
                         <Image
                           src={`${card.image1}`}
-                          width={250}
+                          width={`${
+                            card.image1 === "/images/woman.png" ? "245" : "300"
+                          }`}
                           height={100}
                           alt="Image"
                           quality={100}

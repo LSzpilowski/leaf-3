@@ -1,12 +1,12 @@
 import { mockProjects } from "../mockData";
 import {
   Table,
+  TableBody,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Card } from "@/components/ui/card";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import DialogProject from "../projects/dialogCard/dialogProject";
@@ -39,28 +39,32 @@ function ResultsTable({ areas }: IResultsTable) {
                 .filter((project) => project.district === area)
                 .map((item, index) => (
                   <Dialog key={index}>
-                    <TableRow
-                      className={`font-medium ${
-                        index === 0 ? "bg-blue-500 hover:bg-[blue-500]" : null
-                      }`}
-                    >
-                      <TableCell className="font-medium">{index + 1}</TableCell>
-                      <TableCell>
-                        <DialogTrigger>{item.title}</DialogTrigger>
-                      </TableCell>
-                      <TableCell className="text-left">
-                        {item.estimatedCost}
-                      </TableCell>
-                      <TableCell className="text-center">Votes</TableCell>
-                      <TableCell className="text-right">
-                        <DialogTrigger>
-                          <div className="flex flex-row gap-2 items-center justify-end m-0 p-0">
-                            <p>View</p>
-                            <IoIosArrowDroprightCircle />
-                          </div>
-                        </DialogTrigger>
-                      </TableCell>
-                    </TableRow>
+                    <TableBody>
+                      <TableRow
+                        className={`font-medium ${
+                          index === 0 ? "bg-blue-500 hover:bg-[blue-500]" : null
+                        }`}
+                      >
+                        <TableCell className="font-medium">
+                          {index + 1}
+                        </TableCell>
+                        <TableCell>
+                          <DialogTrigger>{item.title}</DialogTrigger>
+                        </TableCell>
+                        <TableCell className="text-left">
+                          {item.estimatedCost}
+                        </TableCell>
+                        <TableCell className="text-center">Votes</TableCell>
+                        <TableCell className="text-right">
+                          <DialogTrigger>
+                            <div className="flex flex-row gap-2 items-center justify-end m-0 p-0">
+                              <p>View</p>
+                              <IoIosArrowDroprightCircle />
+                            </div>
+                          </DialogTrigger>
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
                     <DialogContent className="flex flex-row w-full h-screen gap-0  px-48 bg-transparent  border-none rounded-none ">
                       <DialogProject project={item} index={index} />
                       <DialogMap project={item} index={index} />
