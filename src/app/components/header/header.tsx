@@ -25,8 +25,6 @@ const aboutTheBudgetButtons = [
   "Voting",
   "Price List - Estimated Costs",
   "To Download",
-  "Archive of ECB",
-  "Previous Editions",
 ];
 
 function Header() {
