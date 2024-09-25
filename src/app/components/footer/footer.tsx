@@ -32,10 +32,6 @@ const aboutTheBudgetButtons = [
     title: "To Download",
     icon: <IoCloudDownloadOutline />,
   },
-  {
-    title: "Archive of ECB",
-    icon: <CgNotes />,
-  },
 ];
 
 function Footer() {

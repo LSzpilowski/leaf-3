@@ -18,7 +18,6 @@ const headerButtons = [
 ];
 
 const aboutTheBudgetButtons = [
-  "News",
   "Budget Step by Step",
   "Schedule",
   "Submitting Projects",
