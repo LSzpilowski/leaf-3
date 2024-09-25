@@ -4,6 +4,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import DialogProject from "./dialogProject";
 import DialogMap from "./dialogMap";
+import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 
 interface IProject {
   title: string;
@@ -30,6 +31,8 @@ function DialogCard({ project, index }: IDialogCard) {
         </div>
       </DialogTrigger>
       <DialogContent className="flex flex-row w-full h-screen gap-0  px-48 bg-transparent  border-none rounded-none ">
+        <DialogTitle></DialogTitle>
+        <DialogDescription></DialogDescription>
         <DialogProject project={project} index={index} />
         <DialogMap project={project} index={index} />
       </DialogContent>

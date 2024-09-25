@@ -11,6 +11,7 @@ import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import DialogProject from "../projects/dialogCard/dialogProject";
 import DialogMap from "../projects/dialogCard/dialogMap";
+import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
 
 interface IResultsTable {
   areas: string[];
@@ -66,6 +67,8 @@ function ResultsTable({ areas }: IResultsTable) {
                       </TableRow>
                     </TableBody>
                     <DialogContent className="flex flex-row w-full h-screen gap-0  px-48 bg-transparent  border-none rounded-none ">
+                      <DialogTitle></DialogTitle>
+                      <DialogDescription></DialogDescription>
                       <DialogProject project={item} index={index} />
                       <DialogMap project={item} index={index} />
                     </DialogContent>

@@ -1,3 +1,4 @@
+import GenBgImage from "@/app/components/utils/genBgImage";
 import {
   Card,
   CardDescription,
@@ -95,19 +96,7 @@ const budgetStepByStep: IBudgetStepByStep[] = [
 function BudgetStepByStep() {
   return (
     <div className="min-h-screen w-full flex flex-col items-center gap-8 bg-[rgb(228,228,228)]  pb-10">
-      <div className="relative w-full h-[28vh]">
-        <Image
-          src={"/images/pkpark.png"}
-          alt="Parkour Park"
-          fill={true}
-          quality={100}
-          className="z-0 object-cover"
-        />
-        <div className="absolute inset-0 bg-black opacity-25 z-10"></div>
-        <div className="absolute inset-0 z-10 h-80 flex flex-col justify-center items-center">
-          <p className="text-4xl font-bold text-white">BUDGET STEP BY STEP</p>
-        </div>
-      </div>
+      <GenBgImage src="/images/budget.jpg" title="Budget Step By Step" />
       <div className="flex flex-row justify-center w-3/4 min-h-[65vh] ">
         <Card className="p-10 w-2/3 flex flex-col gap-5">
           <p>
@@ -123,7 +112,7 @@ function BudgetStepByStep() {
             >
               <CardHeader>
                 <CardTitle>{item.title}</CardTitle>
-                <CardDescription>
+                <div>
                   {item.desc1 ? (
                     <div>
                       <p>{item.description}</p>
@@ -136,7 +125,7 @@ function BudgetStepByStep() {
                   ) : (
                     <>{item.description}</>
                   )}
-                </CardDescription>
+                </div>
               </CardHeader>
             </Card>
           ))}

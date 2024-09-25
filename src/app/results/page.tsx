@@ -5,6 +5,7 @@ import ResultsTable from "./resultsTable";
 import { FaListUl } from "react-icons/fa";
 import { IoBarChartSharp } from "react-icons/io5";
 import StatisticsTable from "./statisticsTable";
+import GenBgImage from "../components/utils/genBgImage";
 
 const areas = ["South-East", "South-West", "North-East", "North-West"];
 interface ISwitchButtons {
@@ -25,7 +26,8 @@ const switchButtons: ISwitchButtons[] = [
 function Results() {
   const [activeTab, setActiveTab] = useState("Results");
   return (
-    <div className="min-h-screen w-full flex flex-col  items-center gap-5 bg-[#E4E4E4] pt-28 pb-10 ">
+    <div className="min-h-screen w-full flex flex-col items-center gap-8 bg-[rgb(228,228,228)] pb-10 ">
+      <GenBgImage src="/images/cheer.jpg" title="Results" />
       <Card className="flex flex-col gap-10 w-2/3 p-10 ">
         <div className="w-full flex flex-row">
           {switchButtons.map((item, index) => (
