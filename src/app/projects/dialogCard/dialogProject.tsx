@@ -8,13 +8,13 @@ import ActiveMap from "./activeMap";
 import ActiveProject from "./activeProject";
 
 interface IProject {
-  title: string;
-  location: string;
-  district: string;
-  estimatedCost: string;
-  excerpt: string;
-  content: string;
-  id: number;
+  title?: string;
+  location?: string;
+  district?: string;
+  estimatedCost?: string;
+  excerpt?: string;
+  content?: string;
+  id?: number;
 }
 
 interface IDialogProject {
@@ -40,6 +40,7 @@ const navButtons: INavButtons[] = [
   },
 ];
 function DialogProject({ project, index }: IDialogProject) {
+  console.log("DialogProject props:", project);
   const [activeTab, setActiveTab] = useState("project");
   return (
     <Card className="w-2/3 min-h-full border-none rounded-tr-none gap-10 ">

@@ -1,11 +1,11 @@
 interface IProject {
-  title: string;
-  location: string;
-  district: string;
-  estimatedCost: string;
-  excerpt: string;
-  content: string;
-  id: number;
+  title?: string;
+  location?: string;
+  district?: string;
+  estimatedCost?: string;
+  excerpt?: string;
+  content?: string;
+  id?: number;
 }
 
 interface IDialogProject {

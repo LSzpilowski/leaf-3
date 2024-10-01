@@ -32,7 +32,7 @@ function Header() {
   };
 
   return (
-    <Card className="flex flex-row items-center fixed top-0 w-3/4 h-20 rounded-t-none z-50">
+    <Card className="flex flex-row items-center fixed top-0 w-3/4 h-20 rounded-t-none z-[9000] bg-white">
       <div className="w-1/4  flex flex-row justify-center">
         <Link href={"/home"}>
           <Image
