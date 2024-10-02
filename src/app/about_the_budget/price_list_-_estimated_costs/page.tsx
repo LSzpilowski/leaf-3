@@ -279,7 +279,7 @@ function PriceListEstimatedCost() {
               className="w-full "
             >
               <AccordionItem value="item-1 bg-orange-500 ">
-                <AccordionTrigger className="w-full h-full  z-10">
+                <AccordionTrigger className="w-full h-full z-10">
                   {priceList.title}
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-5">

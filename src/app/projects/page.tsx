@@ -1,11 +1,17 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { mockProjects } from "../mockData";
-import ProjectsList from "./project/projectList";
-import FilterProjects from "./project/filterProjects";
 import GenBgImage from "../components/utils/genBgImage";
+import dynamic from "next/dynamic";
+
+const FilterProjects = dynamic(() => import("./project/filterProjects"), {
+  ssr: false,
+});
+
+const ProjectList = dynamic(() => import("./project/projectList"), {
+  ssr: false,
+});
 
 function Projects() {
   const [filteredProjects, setFilteredProjects] = useState(mockProjects);
@@ -13,22 +19,6 @@ function Projects() {
   const [projectId, setProjectId] = useState<string>("");
   const [projectName, setProjectName] = useState<string>("");
   const [currentPage, setCurrentPage] = useState(1);
-
-  const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const page = searchParams.get("page");
-    if (page) {
-      setCurrentPage(Number(page));
-    }
-  }, [searchParams]);
-
-  const updateQueryParams = (page: number) => {
-    const url = new URL(window.location.href);
-    url.searchParams.set("page", page.toString());
-    window.history.pushState({}, "", url.toString());
-    setCurrentPage(page);
-  };
 
   const handleZoneChange = (zone: string) => {
     setSelectedZone(zone);
@@ -53,7 +43,6 @@ function Projects() {
 
     if (zone !== "All") {
       filtered = filtered.filter((project) => project.district === zone);
-      console.log(filtered);
     }
 
     if (id.trim() !== "") {
@@ -66,7 +55,6 @@ function Projects() {
       filtered = filtered.filter((project) =>
         project.title.toLowerCase().includes(name.toLowerCase())
       );
-      console.log(filtered);
     }
 
     setFilteredProjects(filtered);
@@ -89,10 +77,10 @@ function Projects() {
           />
         </div>
         <div className="w-2/3 p-5 h-full ">
-          <ProjectsList
+          <ProjectList
             filteredProjects={filteredProjects}
             currentPage={currentPage}
-            setCurrentPage={updateQueryParams}
+            setCurrentPage={setCurrentPage}
           />
         </div>
       </div>

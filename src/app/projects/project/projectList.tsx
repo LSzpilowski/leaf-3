@@ -1,3 +1,5 @@
+"use client";
+
 import ProjectCard from "./projectCard";
 import { IMockProjects } from "@/app/mockData";
 import CustomPagination from "@/app/components/utils/customPagination";
@@ -10,7 +12,7 @@ interface IProjectList {
   setCurrentPage: (currentPage: number) => void;
 }
 
-function ProjectsList({
+function ProjectList({
   filteredProjects,
   currentPage,
   setCurrentPage,
@@ -49,4 +51,4 @@ function ProjectsList({
   );
 }
 
-export default ProjectsList;
+export default ProjectList;

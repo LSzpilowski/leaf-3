@@ -66,18 +66,13 @@ function FilterProjects({
                 }
                 type={input.type}
                 id={input.id}
-                className="w-full h-7"
+                className="w-full h-full z-10"
               />
             </div>
           );
         })}
         <div className="w-full flex flex-col gap-2">
-          <Label
-            htmlFor="projectZone"
-            className="w-full text-base font-semibold"
-          >
-            Zone
-          </Label>
+          <Label className="w-full text-base font-semibold">Zone</Label>
           <Select
             value={selectedZone}
             onValueChange={handleZoneChange}

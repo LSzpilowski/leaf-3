@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Pagination,
   PaginationContent,
@@ -19,6 +21,14 @@ function CustomPagination({
   setCurrentPage,
   totalPages,
 }: ICustomPagination) {
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // Scroll to the top of the page
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <Pagination>
@@ -31,7 +41,7 @@ function CustomPagination({
               href="#"
               onClick={() => {
                 if (currentPage > 1) {
-                  setCurrentPage(currentPage - 1);
+                  handlePageChange(currentPage - 1);
                 }
               }}
             />
@@ -40,7 +50,7 @@ function CustomPagination({
             <PaginationItem key={index}>
               <PaginationLink
                 href={`#/page_${index + 1}`}
-                onClick={() => setCurrentPage(index + 1)}
+                onClick={() => handlePageChange(index + 1)}
                 className={currentPage === index + 1 ? "font-bold" : ""}
               >
                 {index + 1}
@@ -56,7 +66,7 @@ function CustomPagination({
               }
               onClick={() => {
                 if (currentPage < totalPages) {
-                  setCurrentPage(currentPage + 1);
+                  handlePageChange(currentPage + 1);
                 }
               }}
               href="#"
