@@ -15,13 +15,13 @@ function MapFooter() {
 
   return (
     <div className="flex flex-col justify-evenly items-center h-[10vh] w-full bg-black px-20 text-white z-[5000]">
-      <div className="flex flex-row w-full justify-center gap-10">
+      <div className="flex flex-row w-full justify-center gap-10 hover:cursor-not-allowed">
         {privacyButtons.map((item, index) => (
-          <Link href={`/${formatLink(item)}`} key={index} className="group">
+          <div key={index} className="group">
             <div className="bg-bottom bg-gradient-to-r from-[#3388FF] to-[#3388FF] bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-in-out pb-1 font-semibold">
               {item}
             </div>
-          </Link>
+          </div>
         ))}
       </div>
       <div className="w-full flex flex-row justify-center gap-1">
