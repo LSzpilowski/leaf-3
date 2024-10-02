@@ -38,19 +38,23 @@ function DialogCard({ project, index }: IDialogCard) {
           <IoIosArrowForward className="ml-2" />
         </div>
       </DialogTrigger>
-      <DialogContent className="flex flex-row w-full h-screen gap-0  px-48 bg-transparent  border-none rounded-none z-[9999]">
+      <DialogContent className="flex flex-row w-full h-screen gap-0 px-48 bg-transparent border-none rounded-none z-[9999]">
         <DialogTitle></DialogTitle>
         <DialogDescription></DialogDescription>
-        <DialogProject
-          project={project}
-          index={index}
-          activeTab={activeTab}
-          setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
-        />
-        <DialogMap
-          project={project}
-          setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
-        />
+        <div className="w-2/3">
+          <DialogProject
+            project={project}
+            index={index}
+            activeTab={activeTab}
+            setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
+          />
+        </div>
+        <div className="w-1/3">
+          <DialogMap
+            project={project}
+            setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
+          />
+        </div>
       </DialogContent>
     </Dialog>
   );

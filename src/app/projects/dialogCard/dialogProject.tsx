@@ -47,10 +47,9 @@ function DialogProject({
   setActiveTab,
 }: IDialogProject) {
   return (
-    <Card className="w-2/3 min-h-full border-none rounded-tr-none gap-10 ">
-      <Card className="p-6 min-h-full border-none">
-        <p className="text-2xl font-semibold">
-          {" "}
+    <Card className="w-full h-full border-0 rounded-tr-none gap-10 ">
+      <Card className="p-6 h-full border-0  rounded-tr-none ">
+        <p className="text-2xl font-semibold ">
           {index + 1}. {project.title}
         </p>
         <div className="flex flex-row justify-start gap-5 border-b-2 mt-10 text-lg z-50">
@@ -70,14 +69,13 @@ function DialogProject({
             );
           })}
         </div>
-        <div className="mt-5 flex flex-col gap-10 min-h-[70vh] ">
+        <div className="flex flex-col pt-10 ">
           {activeTab === "project" && (
             <ActiveProject project={project} index={index} />
           )}
           {activeTab === "map" && <ActiveMap project={project} index={index} />}
         </div>
       </Card>
-      <div className="h-10 bg-[##2E2E2E] border-none"></div>
     </Card>
   );
 }
