@@ -1,17 +1,23 @@
 "use client";
+
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { Card } from "@/components/ui/card";
-import ResultsTable from "./resultsTable";
 import { FaListUl } from "react-icons/fa";
 import { IoBarChartSharp } from "react-icons/io5";
-import StatisticsTable from "./statisticsTable";
 import GenBgImage from "../components/utils/genBgImage";
+
+const ResultsTable = dynamic(() => import("./resultsTable"), { ssr: false });
+const StatisticsTable = dynamic(() => import("./statisticsTable"), {
+  ssr: false,
+});
 
 const areas = ["South-East", "South-West", "North-East", "North-West"];
 interface ISwitchButtons {
   title: string;
   icon: JSX.Element;
 }
+
 const switchButtons: ISwitchButtons[] = [
   {
     title: "Results",
