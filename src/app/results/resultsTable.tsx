@@ -1,3 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveTab } from "@/redux/tabSlice";
+import { RootState } from "@/redux/configureStore";
 import { mockProjects } from "../mockData";
 import {
   Table,
@@ -18,6 +21,8 @@ interface IResultsTable {
 }
 
 function ResultsTable({ areas }: IResultsTable) {
+  const dispatch = useDispatch();
+  const activeTab = useSelector((state: RootState) => state.tab.activeTab);
   return (
     <div className="flex flex-col gap-10 w-full  ">
       {areas.map((area, index) => {
@@ -69,8 +74,20 @@ function ResultsTable({ areas }: IResultsTable) {
                     <DialogContent className="flex flex-row w-full h-screen gap-0  px-48 bg-transparent  border-none rounded-none ">
                       <DialogTitle></DialogTitle>
                       <DialogDescription></DialogDescription>
-                      <DialogProject project={item} index={index} />
-                      <DialogMap project={item} index={index} />
+                      <DialogProject
+                        project={item}
+                        index={index}
+                        activeTab={activeTab}
+                        setActiveTab={(tab: string) =>
+                          dispatch(setActiveTab(tab))
+                        }
+                      />
+                      <DialogMap
+                        project={item}
+                        setActiveTab={(tab: string) =>
+                          dispatch(setActiveTab(tab))
+                        }
+                      />
                     </DialogContent>
                   </Dialog>
                 ))}
