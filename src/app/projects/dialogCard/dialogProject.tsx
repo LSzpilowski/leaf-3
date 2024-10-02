@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { PiMapPinAreaThin } from "react-icons/pi";
 import { CiViewList } from "react-icons/ci";
@@ -15,11 +12,15 @@ interface IProject {
   excerpt?: string;
   content?: string;
   id?: number;
+  lng: number;
+  lat: number;
 }
 
 interface IDialogProject {
   project: IProject;
   index: number;
+  activeTab: string;
+  setActiveTab: (activeTab: string) => void;
 }
 interface INavButtons {
   title: string;
@@ -39,9 +40,12 @@ const navButtons: INavButtons[] = [
     value: "map",
   },
 ];
-function DialogProject({ project, index }: IDialogProject) {
-  console.log("DialogProject props:", project);
-  const [activeTab, setActiveTab] = useState("project");
+function DialogProject({
+  project,
+  index,
+  activeTab,
+  setActiveTab,
+}: IDialogProject) {
   return (
     <Card className="w-2/3 min-h-full border-none rounded-tr-none gap-10 ">
       <Card className="p-6 min-h-full border-none">

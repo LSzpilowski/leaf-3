@@ -14,7 +14,7 @@ function MapFooter() {
   };
 
   return (
-    <div className="flex flex-col justify-evenly items-center h-[10vh] w-full bg-black px-20 text-white">
+    <div className="flex flex-col justify-evenly items-center h-[10vh] w-full bg-black px-20 text-white z-[9000]">
       <div className="flex flex-row w-full justify-center gap-10">
         {privacyButtons.map((item, index) => (
           <Link href={`/${formatLink(item)}`} key={index} className="group">

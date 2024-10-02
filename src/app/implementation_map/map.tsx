@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { setActiveTab } from "@/redux/tabSlice";
+import { RootState } from "@/redux/configureStore";
 import L from "leaflet";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import DialogProject from "../projects/dialogCard/dialogProject";
@@ -40,6 +42,10 @@ interface IMap {
 }
 
 const Map = ({ projects }: IMap) => {
+  const dispatch = useDispatch();
+
+  const activeTab = useSelector((state: RootState) => state.tab.activeTab);
+
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
 
   const openDialog = (projectId: number) => {
@@ -53,8 +59,6 @@ const Map = ({ projects }: IMap) => {
   const projectToDisplay = selectedProject
     ? projects.find((p) => p.id === selectedProject)
     : null;
-
-  console.log("Selected Project:", projectToDisplay);
 
   return (
     <>
@@ -77,7 +81,7 @@ const Map = ({ projects }: IMap) => {
             icon={markerIcon}
           >
             <Popup className="custom-popup">
-              <div>
+              <div className="flex flex-col gap-1">
                 <strong>{project.title}</strong>
                 {project.excerpt}
               </div>
@@ -102,10 +106,15 @@ const Map = ({ projects }: IMap) => {
               <DialogProject
                 project={projectToDisplay}
                 index={selectedProject}
+                activeTab={activeTab}
+                setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
               />
             )}
             {projectToDisplay && (
-              <DialogMap project={projectToDisplay} index={selectedProject} />
+              <DialogMap
+                project={projectToDisplay}
+                setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
+              />
             )}
           </DialogContent>
         </Dialog>

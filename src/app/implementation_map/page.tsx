@@ -26,11 +26,10 @@ const projects = mockProjects.map((project) => ({
 function ImplementationMap() {
   return (
     <div className="h-[90vh] w-full flex flex-col items-center bg-[rgb(228,228,228)] ">
-      <div className="flex flex-row w-full border-0 h-full">
-        <div className="w-1/2 h-full border-2 rounded-xl">
+      <div className="flex flex-row w-full border-0 h-full gap-2">
+        <div className="w-full h-full border-2 rounded-xl">
           <Map projects={projects} />
         </div>
-        <div className="w-1/2"></div>
       </div>
     </div>
   );

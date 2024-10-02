@@ -66,7 +66,6 @@ function Footer() {
                 <p>EH8 8BG</p>
               </div>
               <div className="flex flex-col">
-                {" "}
                 <p className="text-[#3388FF] text-2xl">Social media</p>
                 <a className="opacity-60 hover:opacity-100 text-2xl" href="#">
                   facebook

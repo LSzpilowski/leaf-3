@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import votesReducer from "./votesSlice"; 
+import tabReducer from "./tabSlice";
 
 const store = configureStore({
   reducer: {
-
+    tab: tabReducer,
     votes: votesReducer,
   },
 });

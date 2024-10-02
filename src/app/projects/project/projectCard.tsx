@@ -25,6 +25,8 @@ interface IProject {
   estimatedCost: string;
   excerpt: string;
   content: string;
+  lng: number;
+  lat: number;
 }
 
 interface IProjectCard {
@@ -54,7 +56,7 @@ function ProjectCard({ project, index, area }: IProjectCard) {
         <p>
           <strong>Estimated Cost:</strong> {project.estimatedCost}
         </p>
-        <p className="my-2">
+        <div className="my-2">
           {isExpanded
             ? project.excerpt
             : truncateText({
@@ -70,7 +72,7 @@ function ProjectCard({ project, index, area }: IProjectCard) {
               See more
             </Button>
           )}
-        </p>
+        </div>
         <DialogCard project={project} index={index} />
         <p className="my-2">
           <strong>ID:</strong> {project.id}
@@ -79,7 +81,5 @@ function ProjectCard({ project, index, area }: IProjectCard) {
     </Card>
   );
 }
-
-// TODO: Add Map functionality with a pin to be able to check loaction of a project
 
 export default ProjectCard;
