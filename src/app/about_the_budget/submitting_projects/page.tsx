@@ -41,7 +41,7 @@ const submitSteps: ISubmitSteps[] = [
 
 function SubmittingProjects() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center gap-8 bg-[rgb(228,228,228)]  pb-10">
+    <div className="min-h-screen w-full flex flex-col items-center gap-8 bg-[rgb(228,228,228)] ">
       <GenBgImage src="/images/budget.jpg" title="Submitting Projects" />
       <div className="flex flex-row justify-center w-3/4 min-h-[65vh] ">
         <Card className="p-10 mb-10 w-2/3 flex flex-col gap-5">

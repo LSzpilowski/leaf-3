@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { mockProjects } from "../mockData";
-import Image from "next/image";
 import ProjectsList from "./project/projectList";
 import FilterProjects from "./project/filterProjects";
 import GenBgImage from "../components/utils/genBgImage";
