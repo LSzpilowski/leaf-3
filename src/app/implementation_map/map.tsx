@@ -82,11 +82,13 @@ const Map = ({ projects }: IMap) => {
           >
             <Popup className="custom-popup">
               <div className="flex flex-col gap-1">
-                <strong>{project.title}</strong>
+                <strong>
+                  {project.id}. {project.title}
+                </strong>
                 {project.excerpt}
               </div>
               <div
-                className="w-1/3 flex flex-row gap-2 items-center justify-center mt-2 p-2 bg-blue-500 rounded-lg h-5 text-white"
+                className="w-1/3 flex flex-row gap-2 items-center justify-center mt-2 p-2 bg-blue-500 rounded-lg h-5 text-white hover:cursor-pointer"
                 onClick={() => openDialog(project.id)}
               >
                 <p>View</p>
@@ -99,22 +101,26 @@ const Map = ({ projects }: IMap) => {
 
       {selectedProject !== null && (
         <Dialog open={true} onOpenChange={closeDialog}>
-          <DialogContent className="flex flex-row w-full h-screen gap-0  px-48 bg-transparent  border-none rounded-none z-[9999]">
+          <DialogContent className="flex flex-row w-full h-screen gap-0  px-48 bg-transparent border-none rounded-none z-[9999]">
             <DialogTitle></DialogTitle>
             <DialogDescription></DialogDescription>
             {projectToDisplay && (
-              <DialogProject
-                project={projectToDisplay}
-                index={selectedProject}
-                activeTab={activeTab}
-                setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
-              />
+              <div className="w-2/3">
+                <DialogProject
+                  project={projectToDisplay}
+                  index={selectedProject}
+                  activeTab={activeTab}
+                  setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
+                />
+              </div>
             )}
             {projectToDisplay && (
-              <DialogMap
-                project={projectToDisplay}
-                setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
-              />
+              <div className="w-1/3">
+                <DialogMap
+                  project={projectToDisplay}
+                  setActiveTab={(tab: string) => dispatch(setActiveTab(tab))}
+                />
+              </div>
             )}
           </DialogContent>
         </Dialog>

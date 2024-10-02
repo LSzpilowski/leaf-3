@@ -27,7 +27,7 @@ const markerIcon = new L.Icon({
 
 function ActiveMap({ project, index }: IActiveMap) {
   return (
-    <div className="w-full h-[70vh] flex flex-col bg-black">
+    <div className="w-full md:h-[60vh] flex flex-col justify-center ">
       <MapContainer
         center={[project.lat, project.lng]}
         zoom={12}
@@ -35,6 +35,7 @@ function ActiveMap({ project, index }: IActiveMap) {
           height: "100%",
           width: "100%",
         }}
+        className=""
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

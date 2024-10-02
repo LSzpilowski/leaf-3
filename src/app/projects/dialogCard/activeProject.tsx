@@ -15,7 +15,7 @@ interface IDialogProject {
 
 function ActiveProject({ project, index }: IDialogProject) {
   return (
-    <div className="min-h-[70vh]  flex flex-col justify-around">
+    <div className="flex flex-col justify-start md:gap-5 gap-10">
       <div>
         <p className="font-bold">Location</p>
         <p>{project.location}</p>
