@@ -270,14 +270,21 @@ function PriceListEstimatedCost() {
     <div className="min-h-screen w-full flex flex-col items-center gap-8 bg-[rgb(228,228,228)] pb-10 ">
       <GenBgImage src="/images/budget.jpg" title="Price List- Estimated Cost" />
       <div className="flex flex-row justify-center w-3/4 min-h-[65vh] ">
-        <Card className="w-2/3 p-10">
+        <Card className="w-2/3 p-10 ">
           {priceLists.map((priceList, index) => (
-            <Accordion key={index} type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>{priceList.title}</AccordionTrigger>
+            <Accordion
+              key={index}
+              type="single"
+              collapsible
+              className="w-full "
+            >
+              <AccordionItem value="item-1 bg-orange-500 ">
+                <AccordionTrigger className="w-full h-full  z-10">
+                  {priceList.title}
+                </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-5">
                   {priceList.contents.map((content, index) => (
-                    <div key={index} className="flex flex-col items-center">
+                    <div key={index} className="flex flex-col items-center ">
                       {content.content?.map((content, index) => (
                         <div
                           key={index}
